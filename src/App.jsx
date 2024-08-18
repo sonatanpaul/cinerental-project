@@ -1,4 +1,5 @@
 import MovieList from "./components/cinemovie/MovieList";
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 import SideBar from "./components/SideBar";
 
@@ -10,6 +11,7 @@ export default function App() {
         <SideBar />
         <MovieList />
       </div>
+      <Footer />
     </>
   );
 }

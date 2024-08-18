@@ -1,10 +1,15 @@
+import { useState } from "react";
+
 import Moon from "../assets/icons/moon.svg";
 import Logo from "../assets/logo.svg";
 import Ring from "../assets/ring.svg";
 import ShoopingCart from "../assets/shopping-cart.svg";
+import CardDetail from "./cinemovie/CardDetail";
 export default function Header() {
+  const [showCart, setShowCart] = useState(false);
   return (
     <>
+      {showCart && <CardDetail />}
       <header>
         <nav className="container flex items-center justify-between space-x-10 py-6">
           <a href="index.html">
