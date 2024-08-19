@@ -2,7 +2,7 @@
 
 import { getImgUrl } from "../../utils/cine-utility";
 
-export default function MovieDetailsModal({ movie, onClose }) {
+export default function MovieDetailsModal({ movie, onClose, handleAddCart }) {
   return (
     <>
       <div className="fixed top-0 left-0 w-screen h-screen z-50 bg-black/60 backdrop-blur-sm">
@@ -28,6 +28,7 @@ export default function MovieDetailsModal({ movie, onClose }) {
               </p>
               <div className="grid lg:grid-cols-2 gap-2">
                 <a
+                  onClick={(e) => handleAddCart(e, movie)}
                   className="bg-primary rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-[#171923] font-semibold text-sm"
                   href="#"
                 >

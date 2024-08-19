@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { MovieContext } from "../../context/moiveContext";
 import { getImgUrl } from "../../utils/cine-utility";
 import MovieRating from "../MovieRating";
 import MovieDetailsModal from "./MovieDetailsModal";
@@ -7,6 +8,19 @@ export default function MovieCard({ movie }) {
   const [showModal, setShowModal] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
+  const { moviesData, setMoviesData } = useContext(MovieContext);
+
+  function handleAddToCart(event, movie) {
+    event.stopPropagation();
+    const found = moviesData.find((m) => m.id === movie.id);
+
+    if (!found) {
+      setMoviesData([...moviesData, movie]);
+      alert(`Added ${movie.title} to cart.`);
+    } else {
+      console.log(`${movie.title} is already in the cart.`);
+    }
+  }
   function handleModalClose() {
     setSelectedMovie(null);
     setShowModal(false);
@@ -20,7 +34,11 @@ export default function MovieCard({ movie }) {
   return (
     <>
       {showModal && (
-        <MovieDetailsModal movie={selectedMovie} onClose={handleModalClose} />
+        <MovieDetailsModal
+          movie={selectedMovie}
+          onClose={handleModalClose}
+          handleAddCart={handleAddToCart}
+        />
       )}
       <figure className="p-4 border border-black/10 shadow-sm dark:border-white/24 rounded-xl">
         <a href="#" onClick={() => handleMovieSelection(movie)}>
@@ -36,6 +54,7 @@ export default function MovieCard({ movie }) {
               <MovieRating value={movie.rating} />
             </div>
             <a
+              onClick={(e) => handleAddToCart(e, movie)}
               className="bg-primary rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-[#171923] font-semibold text-sm"
               href="#"
             >
