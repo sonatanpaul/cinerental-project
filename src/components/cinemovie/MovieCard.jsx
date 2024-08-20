@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useContext, useState } from "react";
+import { toast } from "react-toastify";
 import { MovieContext } from "../../context/moiveContext";
 import { getImgUrl } from "../../utils/cine-utility";
 import MovieRating from "../MovieRating";
@@ -16,9 +17,15 @@ export default function MovieCard({ movie }) {
 
     if (!found) {
       setMoviesData([...moviesData, movie]);
-      alert(`Added ${movie.title} to cart.`);
+      toast.success(`Added ${movie.title} to cart.`, {
+        position: "top-center",
+        theme: "dark",
+      });
     } else {
-      console.log(`${movie.title} is already in the cart.`);
+      toast.warn(`${movie.title} is already in the cart.`, {
+        position: "top-center",
+        theme: "dark",
+      });
     }
   }
   function handleModalClose() {
@@ -40,7 +47,7 @@ export default function MovieCard({ movie }) {
           handleAddCart={handleAddToCart}
         />
       )}
-      <figure className="p-4 border border-black/10 shadow-sm dark:border-white/24 rounded-xl">
+      <figure className="p-4 border border-black/10 shadow-sm dark:border-white/10 rounded-xl">
         <a href="#" onClick={() => handleMovieSelection(movie)}>
           <img
             className="w-full object-cover"

@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useContext } from "react";
+import { toast } from "react-toastify";
 import DeleteImg from "../../assets/delete.svg";
 import CheckOutImg from "../../assets/icons/checkout.svg";
 import { MovieContext } from "../../context/moiveContext";
@@ -10,6 +11,16 @@ export default function CardDetail({ onClose }) {
     event.preventDefault();
     const filteredMovies = moviesData.filter((m) => m.id !== movieId);
     setMoviesData([...filteredMovies]);
+    toast.error(`Deleted to cart.`, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   }
   return (
     <>

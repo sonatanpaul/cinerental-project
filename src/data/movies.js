@@ -31,13 +31,23 @@ const data = [
   },
   {
     id: crypto.randomUUID(),
-    cover: "parasite.jpg",
-    title: "Parasite",
+    cover: "iron-man.png",
+    title: "Iron Man",
     description:
-      "All unemployed, Ki-taek and his family take peculiar interest in the wealthy and glamorous Parks, as they ingratiate themselves into their lives and get entangled in an unexpected incident.",
-    genre: "Comedy, Drama, Thriller",
-    rating: 4,
-    price: 250,
+      "When Branch’s brother, Floyd, is kidnapped for his musical talents by a pair of nefarious pop-star villains, Branch and Poppy embark on a harrowing and emotional journey to reunite the other brothers and rescue Floyd from a fate even worse than pop-culture obscurity.",
+    genre: "Action/Adventure/Sci-fi",
+    rating: 5,
+    price: 100,
+  },
+  {
+    id: crypto.randomUUID(),
+    cover: "iron-man.png",
+    title: "Iron Man",
+    description:
+      "When Branch’s brother, Floyd, is kidnapped for his musical talents by a pair of nefarious pop-star villains, Branch and Poppy embark on a harrowing and emotional journey to reunite the other brothers and rescue Floyd from a fate even worse than pop-culture obscurity.",
+    genre: "Action/Adventure/Sci-fi",
+    rating: 5,
+    price: 100,
   },
   {
     id: crypto.randomUUID(),
