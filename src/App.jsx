@@ -1,22 +1,19 @@
 import { useState } from "react";
-import MovieList from "./components/cinemovie/MovieList";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import SideBar from "./components/SideBar";
 import { MovieContext } from "./context/moiveContext";
+import { ThemeContext } from "./context/themeContext";
+import Page from "./Page";
 
 export default function App() {
   const [moviesData, setMoviesData] = useState([]);
+  const [theme, setTheme] = useState(false);
+
   return (
     <>
-      <MovieContext.Provider value={{ moviesData, setMoviesData }}>
-        <Header />
-        <div className="container grid lg:grid-cols-[218px_1fr] gap-[3.5rem]">
-          <SideBar />
-          <MovieList />
-        </div>
-        <Footer />
-      </MovieContext.Provider>
+      <ThemeContext.Provider value={{ theme, setTheme }}>
+        <MovieContext.Provider value={{ moviesData, setMoviesData }}>
+          <Page />
+        </MovieContext.Provider>
+      </ThemeContext.Provider>
     </>
   );
 }

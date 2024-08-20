@@ -1,15 +1,17 @@
 import { useContext, useState } from "react";
 import Moon from "../assets/icons/moon.svg";
+import Sun from "../assets/icons/sun.svg";
 import Logo from "../assets/logo.svg";
 import Ring from "../assets/ring.svg";
 import ShoopingCart from "../assets/shopping-cart.svg";
 import { MovieContext } from "../context/moiveContext";
+import { ThemeContext } from "../context/themeContext";
 import CardDetail from "./cinemovie/CardDetail";
 export default function Header() {
   const [showCart, setShowCart] = useState(false);
 
   const { moviesData } = useContext(MovieContext);
-  console.log(moviesData);
+  const { theme, setTheme } = useContext(ThemeContext);
 
   return (
     <>
@@ -31,10 +33,11 @@ export default function Header() {
             </li>
             <li>
               <a
+                onClick={() => setTheme(!theme)}
                 className="bg-primary/20 dark:bg-primary/[7%] rounded-lg backdrop-blur-[2px] p-1 inline-block"
                 href="#"
               >
-                <img src={Moon} width="24" height="24" alt="" />
+                <img src={theme ? Sun : Moon} width="24" height="24" alt="" />
               </a>
             </li>
             <li>
